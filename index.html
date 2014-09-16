@@ -6,15 +6,19 @@
         <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
-/* #container { background: #1F8DD6; } */
-#generator {
+#container {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    padding: 1em;
+}
+#generator {
     margin: 0 auto;
 }
-#generator fieldset { padding: 1em; }
+/* #generator fieldset { padding: 1em; } */
 #generator input { text-align: center; }
+#master {  }
+#generate { border-radius: 0 0 4px 4px; top: -4px; display: block; position: relative; }
 
 @media (min-width: 48em) {
     body { font-size: 16px; }
@@ -30,10 +34,8 @@
             <form id="generator" class="pure-form" autocomplete="off">
                 <fieldset class="pure-group">
                     <input id="master" type="password" placeholder="Master password" class="pure-u-1">
-                    <input id="domain" type="text" placeholder="Domain" class="pure-u-1">
-                    <input id="password" type="text" value="Generated password" readonly class="pure-u-1">
+                    <button id="generate" type="submit" class="pure-button pure-button-primary pure-u-1">Generate passwords</button>
                 </fieldset>
-                <button type="submit" hidden>Go</button>
             </form>
         </div>
         <script src="../js-scrypt.git/browser/scrypt.js"></script>

@@ -48,26 +48,54 @@ function generateHandler(ev) {
     var master = document.getElementById('master').value;
     var domain = document.getElementById('domain').value;
 
+    var password = scrypt.encode_utf8(master + '@' + domain);
     var salt = scrypt.encode_utf8("c9463afb3a59bf5182debf31824cff4e");
-
-    var generated = generate(master + '@' + domain, salt);
-
-    var output = document.getElementById('password');
-    output.value = generated;
-}
-
-function generate(master, domain) {
-    var masterEnc = scrypt.encode_utf8(master);
-    var domainEnc = scrypt.encode_utf8(domain);
 
     var N = 16384;
     var r = 8;
     var p = 1;
     var L = 16;
 
-    var array = scrypt.crypto_scrypt(masterEnc, domainEnc, N, r, p, L);
+    var symbols = "!()+023456789=ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 
-    return scrypt.to_hex(array);
+    var generated = generatePassword(password, salt, {N:N, r:r, p:p}, L, symbols);
+
+    var output = document.getElementById('password');
+    output.value = generated;
+}
+
+function symbolGenerator(password, salt, params, L, symbols) {
+    var i = 0;
+    var divisor = Math.floor(255 / symbols.length);
+    var scrypted = scrypt.crypto_scrypt(password, salt, N, r, p, L);
+
+    function next() {
+        var j;
+        do {
+            if (i >= scrypted.length) {
+                var newScrypted = scrypt.crypto_scrypt(
+                        password, salt, params.N, params.r, params.p, L * 2)
+                scrypted = newScrypted.subarray(L, L * 2);
+                L = L * 2;
+                i = 0;
+            }
+            j = Math.floor(scrypted[i] / divisor);
+            i++;
+        } while (j >= symbols.length);
+        return symbols[j];
+    }
+
+    return next;
+}
+
+function generatePassword(password, salt, params, len, symbols) {
+    L = Math.pow(2, Math.ceil(Math.log(len) / Math.LN2))
+    letters = new Array(len);
+    nextSymbol = symbolGenerator(password, salt, params, L, symbols);
+
+    for (var i = 0; i < len; i++) { letters[i] = nextSymbol(); }
+
+    return letters.join('');
 }
 
 document.getElementById('generator').addEventListener('submit', generateHandler, false);

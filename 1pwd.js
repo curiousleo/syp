@@ -2,13 +2,16 @@
 
 $(function() {
 
+  var scryptDefaults = { N: 16384, r: 8, p: 1 };
+  var scryptParams = {};
+
   var Auth = Backbone.Model.extend({
 
     defaults: function() {
       return {
         login: 'user@example.com:0',
         alphabet: '!()+023456789=ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz',
-        length: 24,
+        length: '24',
         order: Auths.nextOrder()
       };
     },
@@ -107,20 +110,18 @@ $(function() {
     },
 
     copy: function() {
-      var params = { N: 16384, r: 8, p: 1 };
-      var salt = scrypt.encode_utf8("123");
-
-      var login = scrypt.encode_utf8(this.model.get('login'));
-      var len = this.model.get('length');
+      var password = scrypt.encode_utf8(this.model.get('login') + scryptParams['master']);
+      var salt = new Uint8Array(scryptParams['saltEnc']);
+      var len = parseInt(this.model.get('length'));
       var alphabet = this.model.get('alphabet');
 
-      var password = generatePassword(login, salt, params, len, alphabet);
-      var container = $('#clipboard-container');
+      var scrypted = generatePassword(password, salt, scryptParams, len, alphabet);
 
+      var container = $('#clipboard-container');
       container.empty().show();
       $('<textarea id="clipboard"></textarea>')
         .appendTo(container)
-        .text(password)
+        .text(scrypted)
         .focus()
         .select();
     }
@@ -139,6 +140,27 @@ $(function() {
     },
 
     initialize: function() {
+      var fragment = window.location.hash;
+      var params = urlParams(fragment.replace('#', ''));
+
+      var props = ['N', 'r', 'p'];
+      var name = '';
+      for (var i = 0; i < props.length; i++) {
+        name = props[i];
+        if (params[name]) {
+          scryptParams[name] = parseInt(params[name]);
+        } else {
+          scryptParams[name] = scryptDefaults[name];
+        }
+      }
+
+      if (!params['salt']) {
+        params['salt'] = randomHex(16);
+      }
+      scryptParams['salt'] = params['salt'];
+      scryptParams['saltEnc'] = hexStringToUint8Array(params['salt']);
+
+      window.location.hash = $.param(scryptParams);
 
       this.loginInput = this.$('#new-auth');
       this.masterInput = this.$('#master-password');
@@ -150,16 +172,20 @@ $(function() {
       this.listenTo(Auths, 'all', this.render);
 
       this.loginInput.hide();
-
+      $('#instructions .master').show();
     },
 
     render: function() {
       if (Auths.length) {
         this.main.show();
         this.footer.show();
+        $('#instructions .empty').hide();
+        $('#instructions .copy').show();
       } else {
         this.main.hide();
         this.footer.hide();
+        $('#instructions .empty').show();
+        $('#instructions .copy').hide();
       }
     },
 
@@ -180,17 +206,18 @@ $(function() {
     },
 
     setMasterOnEnter: function(e) {
-
       if (e.keyCode != 13) return;
       if (!this.masterInput.val()) return;
 
       this.master = this.masterInput.val();
+      scryptParams.master = this.master;
 
       this.masterInput.hide();
       this.loginInput.show();
+      $('#instructions .master').hide();
+      $('#instructions .empty').show();
 
       Auths.fetch();
-
     },
 
     createOnEnter: function(e) {

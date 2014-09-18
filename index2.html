@@ -15,7 +15,7 @@
     <header>
       <h1>Passwords</h1>
       <input type="password" placeholder="What is your master password?" id="master-password">
-      <input type="text" placeholder="Which service needs authentication?" id="new-auth">
+      <input type="text" placeholder="Which login needs authentication?" id="new-auth">
     </header>
 
     <section id="main">
@@ -29,7 +29,9 @@
   </div>
 
   <div id="instructions">
-    Double-click to edit a login.
+    <span class="master">Enter your master password. Make it a good one!</span>
+    <span class="empty">Enter a login identifier. Example: john.doe@amazon.com</span>
+    <span class="copy">Hover over a login, click <i class="fa fa-clipboard"></i> and then press <b>Ctrl-C</b> or <b>Cmd-C</b> to copy the password to the clipboard.</span>
   </div>
 
   <div id="credits">
@@ -46,6 +48,7 @@
   <script src="contrib/backbone.js"></script>
   <script src="contrib/backbone.localStorage.js"></script>
   <script src="contrib/scrypt.js"></script>
+  <script src="util.js"></script>
   <script src="1pwd-gen.js"></script>
   <script src="1pwd.js"></script>
 

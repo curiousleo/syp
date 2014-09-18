@@ -1,0 +1,254 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.4em;
+  background: #eeeeee;
+  color: #333333;
+  width: 520px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+#authapp {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 40px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
+  -ms-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
+  -webkit-border-radius: 0 0 5px 5px;
+  -moz-border-radius: 0 0 5px 5px;
+  -ms-border-radius: 0 0 5px 5px;
+  -o-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
+}
+
+#authapp h1 {
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  padding: 0 0 10px 0;
+}
+
+#authapp input, #authapp select {
+  border: 1px solid #999999;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+  -ms-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+  -o-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+  font-family: inherit;
+  outline: none;
+}
+
+#authapp input[type="text"], #authapp input[type="password"] {
+  width: 100%;
+  font-size: 24px;
+  line-height: 1.4em;
+  padding: 6px;
+}
+
+#authapp input::-webkit-input-placeholder {
+  font-style: italic;
+}
+
+#main {
+  display: none;
+}
+
+#auth-list {
+  margin: 10px 0;
+  padding: 0;
+  list-style: none;
+}
+
+#auth-list li {
+  padding: 18px 20px 18px 0;
+  position: relative;
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+}
+
+#auth-list li input[type="text"] {
+  margin-bottom: 5px;
+}
+
+#auth-list li label, #auth-list li select, #auth-list li input[type="number"] {
+  font-size: 16px;
+}
+
+#auth-list li input[type="number"] {
+  width: 3em;
+}
+
+#auth-list li:last-child {
+  border-bottom: none;
+}
+
+#auth-list li.done label {
+  color: #777777;
+  text-decoration: line-through;
+}
+
+#auth-list a.action {
+  position: absolute;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background: white;
+  padding: 6px;
+  color: #aaa;
+}
+
+#auth-list .view a.action {
+  top: 10px;
+  display: none;
+}
+
+#auth-list a.save {
+  background: transparent;
+  bottom: -5px;
+  right: 0;
+}
+
+#auth-list input.alphabet {
+  font-size: 16px;
+  width: 8em;
+  margin-right: 1em;
+}
+
+#auth-list input.alphabet, #auth-list input[type="number"] {
+  padding: 2px;
+}
+
+#auth-list a.action:hover {
+  color: inherit;
+}
+
+#auth-list a.copy {
+  right: 60px;
+}
+
+#auth-list a.edit {
+  right: 30px;
+}
+
+#auth-list a.delete {
+  right: 0;
+}
+
+#auth-list li:hover a.action {
+    display: block;
+}
+
+#auth-list li.editing {
+  margin-top: -1px;
+  padding: 0;
+}
+
+#auth-list li.editing:last-child {
+  margin-bottom: -1px;
+}
+
+#auth-list li.editing div.change {
+  display: block;
+  margin: 0;
+}
+
+#auth-list li.editing .view {
+  display: none;
+}
+
+#auth-list li .view label {
+  word-break: break-word;
+}
+
+#auth-list li div.change {
+  display: none;
+}
+
+#authapp footer {
+  display: none;
+  margin: 0 -20px -20px -20px;
+  overflow: hidden;
+  color: #555555;
+  background: #f4fce8;
+  border-top: 1px solid #ededed;
+  padding: 0 20px;
+  line-height: 37px;
+  -webkit-border-radius: 0 0 5px 5px;
+  -moz-border-radius: 0 0 5px 5px;
+  -ms-border-radius: 0 0 5px 5px;
+  -o-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
+}
+
+#clear-all {
+  float: right;
+  line-height: 20px;
+  text-decoration: none;
+  background: rgba(0, 0, 0, 0.1);
+  color: #555555;
+  font-size: 11px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding: 0 10px 1px;
+  cursor: pointer;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+  border-radius: 12px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0 0;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0 0;
+  -ms-box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0 0;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0 0;
+}
+
+#clear-all:hover {
+  background: rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 -1px 0 0;
+  -moz-box-shadow: rgba(0, 0, 0, 0.3) 0 -1px 0 0;
+  -ms-box-shadow: rgba(0, 0, 0, 0.3) 0 -1px 0 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.3) 0 -1px 0 0;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 -1px 0 0;
+}
+
+#clear-all:active {
+  position: relative;
+  top: 1px;
+}
+
+#auth-count span {
+  font-weight: bold;
+}
+
+#instructions {
+  margin: 10px auto;
+  color: #777777;
+  text-shadow: rgba(255, 255, 255, 0.8) 0 1px 0;
+  text-align: center;
+}
+
+#instructions a {
+  color: #336699;
+}
+
+#credits {
+  margin: 30px auto;
+  color: #999;
+  text-shadow: rgba(255, 255, 255, 0.8) 0 1px 0;
+  text-align: center;
+}
+
+#credits a {
+  color: #888;
+}

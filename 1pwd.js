@@ -66,7 +66,8 @@ $(function() {
       'click .delete': 'clear',
       'click .save': 'close',
       'keypress .login': 'closeOnEnter',
-      'keypress .alphabet': 'closeOnEnter'
+      'keypress .alphabet': 'closeOnEnter',
+      'click .view span': 'copy'
     },
 
     initialize: function() {
@@ -223,7 +224,7 @@ $(function() {
     createOnEnter: function(e) {
 
       if (e.keyCode != 13) return;
-      if (!this.masterInput.val()) return;
+      if (!this.loginInput.val()) return;
 
       Auths.create({ login: this.loginInput.val() });
       this.loginInput.val('');

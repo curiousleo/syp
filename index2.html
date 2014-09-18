@@ -14,8 +14,8 @@
 
     <header>
       <h1>Passwords</h1>
-      <input type="password" placeholder="What is your master password?" id="master-password">
-      <input type="text" placeholder="Which login needs authentication?" id="new-auth">
+      <input type="password" placeholder="What's your master password?" id="master-password">
+      <input type="text" placeholder="Create a password for ..." id="new-auth">
     </header>
 
     <section id="main">
@@ -31,7 +31,7 @@
   <div id="instructions">
     <span class="master">Enter your master password. Make it a good one!</span>
     <span class="empty">Enter a login identifier. Example: john.doe@amazon.com</span>
-    <span class="copy">Hover over a login, click <i class="fa fa-clipboard"></i> and then press <b>Ctrl-C</b> or <b>Cmd-C</b> to copy the password to the clipboard.</span>
+    <span class="copy">Click on a login, then press <b>Ctrl-C</b> to copy the password to the clipboard.</span>
   </div>
 
   <div id="credits">
@@ -57,7 +57,6 @@
   <script type="text/template" id="auth-template">
     <div class="view">
       <span><%- login %></span>
-      <a class="action copy fa fa-clipboard"></a>
       <a class="action edit fa fa-pencil"></a>
       <a class="action delete fa fa-remove"></a>
     </div>

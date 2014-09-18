@@ -49,7 +49,7 @@ body {
 }
 
 #authapp input[type="text"], #authapp input[type="password"] {
-  width: 100%;
+  width: 466px;
   font-size: 24px;
   line-height: 1.4em;
   padding: 6px;
@@ -112,6 +112,10 @@ body {
   display: none;
 }
 
+#auth-list .view span {
+  cursor: default;
+}
+
 #auth-list a.save {
   background: transparent;
   bottom: -5px;
@@ -132,10 +136,6 @@ body {
   color: inherit;
 }
 
-#auth-list a.copy {
-  right: 60px;
-}
-
 #auth-list a.edit {
   right: 30px;
 }
@@ -149,7 +149,7 @@ body {
 }
 
 #auth-list li.editing {
-  margin-top: -1px;
+  margin-top: -3px;
   padding: 0;
 }
 
@@ -272,4 +272,8 @@ body {
   width: 1px;
   height: 1px;
   padding: 0px;
+}
+
+#new-auth {
+  display: none;
 }

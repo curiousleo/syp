@@ -1,0 +1,99 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Passwords</title>
+  <link href="1pwd.css" rel="stylesheet">
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div id="authapp">
+
+    <header>
+      <h1>Passwords</h1>
+      <input type="text" placeholder="Which service needs authentication?" id="new-auth">
+    </header>
+
+    <section id="main" style="display: block;">
+      <ul id="auth-list">
+        <li>
+          <div class="view">
+            <span>lmarkert@digg.com:0</span>
+            <a class="action copy fa fa-clipboard"></a>
+            <a class="action edit fa fa-pencil"></a>
+            <a class="action delete fa fa-remove"></a>
+          </div>
+          <div class="edit">
+            <input type="text" value="leo.markert@amazon.com:0">
+
+            <label for="alphabet-1">Alphabet</label>
+            <input class="alphabet" id="alphabet-1" type="text" value="!()+023456789=ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz">
+
+            <label for="length-1">Length</label>
+            <input id="length-1" type="number" min="2" max="80" value="16">
+          </div>
+        </li>
+        <li class="editing">
+          <div class="view">
+            <span>leo.markert@amazon.com:0</span>
+            <a class="action copy fa fa-clipboard"></a>
+            <a class="action edit fa fa-pencil"></a>
+            <a class="action delete fa fa-remove"></a>
+          </div>
+          <div class="edit">
+            <input type="text" value="leo.markert@amazon.com:0">
+
+            <label for="alphabet-2">Alphabet</label>
+            <input class="alphabet" id="alphabet-2" type="text" value="!()+023456789=ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz">
+
+            <label for="length-2">Length</label>
+            <input id="length-2" type="number" min="2" max="80" value="16">
+
+            <a class="action save fa fa-check"></a>
+          </div>
+        </li>
+        <li>
+          <div class="view">
+            <span>curiousleo@ymail.com:2</span>
+            <a class="action copy fa fa-clipboard"></a>
+            <a class="action edit fa fa-pencil"></a>
+            <a class="action delete fa fa-remove"></a>
+          </div>
+          <div class="edit">
+            <input type="text" value="leo.markert@amazon.com:0">
+
+            <label for="alphabet-3">Alphabet</label>
+            <input class="alphabet" id="alphabet-3" type="text" value="!()+023456789=ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz">
+
+            <label for="length-3">Length</label>
+            <input id="length-3" type="number" min="2" max="80" value="16">
+          </div>
+        </li>
+      </ul>
+    </section>
+
+  </div>
+  <!-- Templates -->
+
+  <script type="text/template" id="item-template">
+    <div class="view">
+      <span><%- login %></span>
+      <a class="action copy fa fa-clipboard"></a>
+      <a class="action edit fa fa-pencil"></a>
+      <a class="action delete fa fa-remove"></a>
+    </div>
+    <div class="edit">
+      <input type="text" value="<%- login %>">
+
+      <label for="alphabet-<%- order %>">Alphabet</label>
+      <input class="alphabet" id="alphabet-<%- order %>" type="text" value="<%- alphabet %>">
+
+      <label for="length-<%- order %>">Length</label>
+      <input id="length-<%- order %>" type="number" min="2" max="80" value="<%- length %>">
+
+      <a class="action save fa fa-check"></a>
+    </div>
+  </script>
+
+</body></html>

@@ -14,12 +14,11 @@
 
     <header>
       <h1>Passwords</h1>
+      <input type="password" placeholder="What is your master password?" id="master-password">
       <input type="text" placeholder="Which service needs authentication?" id="new-auth">
     </header>
 
     <section id="main">
-      <input id="toggle-all" type="checkbox">
-      <label for="toggle-all">Mark all as complete</label>
       <ul id="auth-list"></ul>
     </section>
 
@@ -48,21 +47,21 @@
 
   <!-- Templates -->
 
-  <script type="text/template" id="item-template">
+  <script type="text/template" id="auth-template">
     <div class="view">
       <span><%- login %></span>
       <a class="action copy fa fa-clipboard"></a>
       <a class="action edit fa fa-pencil"></a>
       <a class="action delete fa fa-remove"></a>
     </div>
-    <div class="edit">
-      <input type="text" value="<%- login %>">
+    <div class="change">
+      <input class="login" type="text" value="<%- login %>">
 
       <label for="alphabet-<%- order %>">Alphabet</label>
       <input class="alphabet" id="alphabet-<%- order %>" type="text" value="<%- alphabet %>">
 
       <label for="length-<%- order %>">Length</label>
-      <input id="length-<%- order %>" type="number" min="2" max="80" value="<%- length %>">
+      <input class="length" id="length-<%- order %>" type="number" min="2" max="80" value="<%- length %>">
 
       <a class="action save fa fa-check"></a>
     </div>

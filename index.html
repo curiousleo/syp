@@ -3,21 +3,24 @@
     <head>
         <meta charset="utf-8">
         <title></title>
-        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+        <link rel="stylesheet" href="normalize.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
 #container {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
     padding: 1em;
 }
 #generator {
     margin: 0 auto;
+    max-width: 500px;
 }
 /* #generator fieldset { padding: 1em; } */
-#generator input { text-align: center; }
-#master {  }
+#generator input, #generator button {
+    width: 100%;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 #generate { border-radius: 0 0 4px 4px; top: -4px; display: block; position: relative; }
 
 @media (min-width: 48em) {
@@ -31,10 +34,10 @@
     </head>
     <body>
         <div id="container">
-            <form id="generator" class="pure-form" autocomplete="off">
-                <fieldset class="pure-group">
-                    <input id="master" type="password" placeholder="Master password" class="pure-u-1">
-                    <button id="generate" type="submit" class="pure-button pure-button-primary pure-u-1">Generate passwords</button>
+            <form id="generator" autocomplete="off">
+                <fieldset>
+                    <input id="master" type="password" placeholder="Master password">
+                    <button id="generate" type="submit">Generate passwords</button>
                 </fieldset>
             </form>
         </div>

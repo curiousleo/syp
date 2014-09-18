@@ -106,6 +106,25 @@ $(function() {
       this.model.destroy();
     },
 
+    copy: function() {
+      var params = { N: 128, r: 8, p: 1 };
+      var salt = scrypt.encode_utf8("123");
+
+      var login = scrypt.encode_utf8(this.model.get('login'));
+      var len = this.model.get('length');
+      var alphabet = this.model.get('alphabet');
+
+      var password = generatePassword(login, salt, params, len, alphabet);
+      var container = $('#clipboard-container');
+
+      container.empty().show();
+      $('<textarea id="clipboard"></textarea>')
+        .appendTo(container)
+        .text(password)
+        .focus()
+        .select();
+    }
+
   });
 
 

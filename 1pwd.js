@@ -8,7 +8,7 @@ $(function() {
       return {
         login: 'user@example.com:0',
         alphabet: '!()+023456789=ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz',
-        length: 16,
+        length: 24,
         order: Auths.nextOrder()
       };
     },
@@ -36,7 +36,7 @@ $(function() {
   var AuthCollection = Backbone.Collection.extend({
 
     model: Auth,
-    localStorage: new Backbone.LocalStorage("1pwd"),
+    localStorage: new Backbone.LocalStorage('1pwd'),
 
     nextOrder: function() {
       if (!this.length) return 1;
@@ -107,7 +107,7 @@ $(function() {
     },
 
     copy: function() {
-      var params = { N: 128, r: 8, p: 1 };
+      var params = { N: 16384, r: 8, p: 1 };
       var salt = scrypt.encode_utf8("123");
 
       var login = scrypt.encode_utf8(this.model.get('login'));
@@ -173,7 +173,9 @@ $(function() {
     },
 
     clearAll: function() {
-      Auths.invoke('destroy');
+      while ( (auth = Auths.shift()) ) {
+        Auths.localStorage.destroy(auth);
+      }
       return false;
     },
 

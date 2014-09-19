@@ -1,7 +1,7 @@
 Scrypt Your Passwords
 =====================
 
-[SYP][gh-page] is a password manager that doesn't store your passwords – instead, it (re)generates them on demand.
+[SYP][gh-page] is a password manager that doesn't store your passwords – instead, it (re)generates them on demand. It is implemented as a webapp that runs entirely in your browser since it does not require a server-side storage backend.
 
 Quickstart
 ----------

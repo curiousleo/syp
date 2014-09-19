@@ -34,17 +34,17 @@ In Haskell-like pseudocode, this works roughly as follows:
 
 ``` haskell
 scrypted :: Password -> Salt -> Int -> Int -> Int -> [Word8]
-scrypted pwd salt N p r = scrypted' 2 where
-  scrypted' L = scrypt pwd salt N p r L : drop L scrypted' (L * 2)
+scrypted pwd salt n p r = scrypted' 2 where
+  scrypted' l = scrypt pwd salt n p r l : drop l scrypted' (l * 2)
 
 password :: [a] -> Int -> Password -> Login -> Salt -> Int -> Int -> Int -> [a]
-password alphabet length master login salt N p r =
-  take length $ map (alphabet !!) $ filter (< n) $ map (/ d) stream
+password alphabet len master login salt n p r =
+  take len $ map (alphabet !!) $ filter (< k) $ map (/ d) stream
   where
-    n = length alphabet
-    d = floor (255 / n)
+    k = length alphabet
+    d = floor (255 / k)
     pwd = master ++ login
-    stream = scrypted pwd salt N p r
+    stream = scrypted pwd salt n p r
 ```
 
 [gh-page]: http://curiousleo.github.io/syp/

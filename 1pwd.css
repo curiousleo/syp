@@ -9,7 +9,8 @@ body {
   line-height: 1.4em;
   background: #eeeeee;
   color: #333333;
-  width: 520px;
+  width: 100%;
+  max-width: 520px;
   margin: 0 auto;
   -webkit-font-smoothing: antialiased;
 }
@@ -49,10 +50,12 @@ body {
 }
 
 #authapp input[type="text"], #authapp input[type="password"] {
-  width: 466px;
+  width: 100%;
   font-size: 24px;
   line-height: 1.4em;
   padding: 6px;
+  margin-right: 6px;
+  box-sizing: border-box;
 }
 
 #authapp input::-webkit-input-placeholder {
@@ -123,7 +126,7 @@ body {
 
 #auth-list .view a.action {
   top: 10px;
-  display: none;
+/*display: none;*/
 }
 
 #auth-list .view span {
@@ -133,7 +136,7 @@ body {
 #auth-list a.save {
   background: transparent;
   bottom: -5px;
-  right: 0;
+  right: -13px;
 }
 
 #auth-list input.alphabet {
@@ -151,11 +154,11 @@ body {
 }
 
 #auth-list a.edit {
-  right: 30px;
+  right: 15px;
 }
 
 #auth-list a.delete {
-  right: 0;
+  right: -15px;
 }
 
 #auth-list li:hover a.action {
@@ -206,11 +209,11 @@ body {
 
 #clear-all {
   float: right;
-  line-height: 20px;
+  line-height: 24px;
   text-decoration: none;
   background: rgba(0, 0, 0, 0.1);
   color: #555555;
-  font-size: 11px;
+  font-size: 16px;
   margin-top: 8px;
   margin-bottom: 8px;
   padding: 0 10px 1px;
@@ -290,4 +293,11 @@ body {
 
 #new-auth {
   display: none;
+}
+
+@media (min-width: 760px) {
+  #clear-all {
+    line-height: 20px;
+    font-size: 11px;
+  }
 }

@@ -39,10 +39,10 @@ scrypted pwd salt n p r = scrypted' 2 where
 
 password :: [a] -> Int -> Password -> Login -> Salt -> Int -> Int -> Int -> [a]
 password alphabet len master login salt n p r =
-  take len $ map (alphabet !!) $ filter (< k) $ map (/ d) stream
+  take len $ map (alphabet !!) $ filter (< k) $ map (`div` d) stream
   where
     k = length alphabet
-    d = floor (255 / k)
+    d = 255 `div` k
     pwd = master ++ login
     stream = scrypted pwd salt n p r
 ```

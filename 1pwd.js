@@ -180,8 +180,8 @@ $(function() {
       this.listenTo(Auths, 'reset', this.addAll);
       this.listenTo(Auths, 'all', this.render);
 
-      this.loginInput.hide();
-      $('#instructions .master').show();
+      // this.loginInput.hide();
+      // $('#instructions .master').show();
     },
 
     render: function() {
@@ -211,6 +211,7 @@ $(function() {
       while ( (auth = Auths.shift()) ) {
         Auths.localStorage.destroy(auth);
       }
+      this.loginInput.focus();
       return false;
     },
 
@@ -222,7 +223,7 @@ $(function() {
       scryptParams.master = this.master;
 
       this.masterInput.hide();
-      this.loginInput.show();
+      this.loginInput.show().focus();
       $('#instructions .master').hide();
       $('#instructions .empty').show();
 

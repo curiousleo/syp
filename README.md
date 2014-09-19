@@ -35,7 +35,7 @@ In Haskell-like pseudocode, this works roughly as follows:
 ``` haskell
 scrypted :: Password -> Salt -> Int -> Int -> Int -> [Word8]
 scrypted pwd salt n p r = scrypted' 2 where
-  scrypted' l = scrypt pwd salt n p r l : drop l scrypted' (l * 2)
+  scrypted' len = scrypt pwd salt n p r len : drop len scrypted' (len * 2)
 
 password :: [a] -> Int -> Password -> Login -> Salt -> Int -> Int -> Int -> [a]
 password alphabet len master login salt n p r =

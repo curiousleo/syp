@@ -118,13 +118,21 @@ $(function() {
 
       var scrypted = generatePassword(password, salt, scryptParams, len, alphabet);
 
+      $('#authapp .copied').removeClass('copied');
+
       var container = $('#clipboard-container');
       container.empty().show();
-      $('<textarea id="clipboard"></textarea>')
+      var textarea = $('<textarea id="clipboard"></textarea>')
         .appendTo(container)
         .text(scrypted)
         .focus()
         .select();
+
+      var $el = this.$el;
+      $el.addClass('copied');
+      textarea.on('blur', function() {
+        $el.removeClass('copied');
+      });
     }
 
   });

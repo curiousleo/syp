@@ -102,9 +102,23 @@ body {
   cursor: pointer;
   width: 30px;
   height: 30px;
-  background: white;
+/*background: white;*/
   padding: 6px;
   color: #aaa;
+}
+
+#auth-list li .copy-message {
+  font-size: 11px;
+  margin-bottom: -19px;
+  display: none;
+}
+
+#auth-list li.copied {
+  background: #FFFCAE;
+}
+
+#auth-list li.copied .copy-message {
+  display: block;
 }
 
 #auth-list .view a.action {

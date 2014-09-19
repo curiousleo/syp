@@ -28,7 +28,7 @@ The `salt` parameter is passed to the password generator too. A random salt is g
 Password generation
 -------------------
 
-SYP's password generation algorithm takes a master password, a login identifier, the salt and parameters for Scrypt (`N`, `p`, `r`). It then treats the output of successive calls to the Scrypt function with increasing length (`L`) argument as an infinite stream from which the actual password is extracted.
+SYP's password generation algorithm takes an alphabet, the desired password length, the master password, a login identifier, the salt and parameters for Scrypt (`N`, `p`, `r`). It then treats the output of successive calls to the Scrypt function with increasing length (`L`) argument as an infinite stream from which the actual password is extracted.
 
 In Haskell-like pseudocode, this works roughly as follows:
 

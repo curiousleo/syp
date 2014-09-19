@@ -10,7 +10,8 @@ Quickstart
 2. Enter a master password.
 3. Add a first login, e.g. `john.doe@example.com`.
 4. Click on the newly added login to generate the password.
-5. Bookmark the URL to be able to regenerate your passwords. See [What's in a URL?](#whats-in-a-url)
+5. Bookmark the URL to be able to regenerate your passwords (see [What's in a URL?](#whats-in-a-url)).
+6. Send the URL to all your devices so you can generate your passwords on them too!
 
 What's in a URL?
 ----------------

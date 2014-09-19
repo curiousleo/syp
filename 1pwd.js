@@ -65,9 +65,9 @@ $(function() {
       'click .edit': 'edit',
       'click .delete': 'clear',
       'click .save': 'close',
-      'keypress .login': 'closeOnEnter',
-      'keypress .alphabet': 'closeOnEnter',
-      'click .view span': 'copy'
+      'keypress .change .login': 'closeOnEnter',
+      'keypress .change .alphabet': 'closeOnEnter',
+      'click .view .login': 'copy'
     },
 
     initialize: function() {
@@ -77,9 +77,9 @@ $(function() {
 
     render: function() {
       this.$el.html(this.template(this.model.toJSON()));
-      this.login = this.$('.login');
-      this.alphabet = this.$('.alphabet');
-      this.len = this.$('.length');
+      this.login = this.$('.change .login');
+      this.alphabet = this.$('.change .alphabet');
+      this.len = this.$('.change .length');
       return this;
     },
 
@@ -118,21 +118,25 @@ $(function() {
 
       var scrypted = generatePassword(password, salt, scryptParams, len, alphabet);
 
-      $('#authapp .copied').removeClass('copied');
+      if (isTouch()) {
+        window.prompt('Your password for ' + this.model.get('login'), scrypted);
+      } else {
+        $('#authapp .copied').removeClass('copied');
 
-      var container = $('#clipboard-container');
-      container.empty().show();
-      var textarea = $('<textarea id="clipboard"></textarea>')
-        .appendTo(container)
-        .text(scrypted)
-        .focus()
-        .select();
+        var container = $('#clipboard-container');
+        container.empty().show();
+        var textarea = $('<textarea id="clipboard"></textarea>')
+          .appendTo(container)
+          .text(scrypted)
+          .focus()
+          .select();
 
-      var $el = this.$el;
-      $el.addClass('copied');
-      textarea.on('blur', function() {
-        $el.removeClass('copied');
-      });
+        var $el = this.$el;
+        $el.addClass('copied');
+        textarea.on('blur', function() {
+          $el.removeClass('copied');
+        });
+      }
     }
 
   });
@@ -207,9 +211,8 @@ $(function() {
     },
 
     clearAll: function() {
-      while ( (auth = Auths.shift()) ) {
-        Auths.localStorage.destroy(auth);
-      }
+      _.chain(Auths.models).clone().each(function(auth) { auth.destroy(); });
+
       this.loginInput.focus();
       return false;
     },

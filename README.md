@@ -24,7 +24,7 @@ https://curiousleo.github.io/syp/#N=16384&r=8&p=1&salt=0063b3028795b083f30780f87
 
 `N`, `r` and `p` are passed on to the [Scrypt][scrypt-wp] algorithm which is used for generating the passwords. They are set to the recommended values for interactive logins.
 
-The `salt` parameter is passed to the password generator too. A random salt is generated when you visit the webapp. In order to [regenerate your passwords](#password-generation), you must use the same salt every time.
+The `salt` parameter is passed to the password generator too. A random salt is generated when you visit the webapp. In order to [regenerate your passwords](#password-generation), you must use the same salt (and the same Scrypt parameters) every time.
 
 Password generation
 -------------------

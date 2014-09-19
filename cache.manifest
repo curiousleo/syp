@@ -1,0 +1,10 @@
+CACHE MANIFEST
+# v1 2014-09-19
+syp.css
+syp.js
+util.js
+contrib/backbone.localStorage.js
+contrib/backbone.js
+contrib/underscore.js
+contrib/jquery.js
+contrib/scrypt.js

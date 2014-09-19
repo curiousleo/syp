@@ -1,16 +1,16 @@
 Scrypt Your Passwords
 =====================
 
-[SYP][gh-page] is a webapp that generates passwords on the fly for different logins, based on a single master password. The key idea is that password generation is deterministic, which means that there is no need to save them anywhere.
+[SYP][gh-page] is a password manager that doesn't store your passwords -- instead, it deterministically (re)generates them on demand.
 
-Webapp quickstart
------------------
+Quickstart
+----------
 
 1. Open [SYP][gh-page].
 2. Enter a master password.
 3. Add a first login, e.g. `john.doe@example.com`.
 4. Click on the newly added login to generate the password.
-5. Bookmark the webapp URL to be able to regenerate your passwords. See [What's in a URL?](#whats-in-a-url)
+5. Bookmark the URL to be able to regenerate your passwords. See [What's in a URL?](#whats-in-a-url)
 
 What's in a URL?
 ----------------
@@ -18,12 +18,34 @@ What's in a URL?
 Notice that the URL will contain a few parameters, for example:
 
 ```
-http://curiousleo.github.io/syp/#N=16384&r=8&p=1&salt=0063b3028795b083f30780f871d70b52
+https://curiousleo.github.io/syp/#N=16384&r=8&p=1&salt=0063b3028795b083f30780f871d70b52
 ```
 
 `N`, `r` and `p` are passed on to the [Scrypt][scrypt-wp] algorithm which is used for generating the passwords. They are set to the recommended values for interactive logins.
 
 The `salt` parameter is passed to the password generator too. A random salt is generated when you visit the webapp. In order to regenerate your passwords, you must use the same salt every time.
+
+Password generation
+-------------------
+
+SYP's password generation algorithm takes a master password, a login identifier, the salt and parameters for Scrypt (`N`, `p`, `r`). It then treats the output of successive calls to the Scrypt function with increasing length (`L`) argument as an infinite stream from which the actual password is extracted.
+
+In Haskell-like pseudocode, this works roughly as follows:
+
+``` haskell
+scrypted :: Password -> Salt -> Int -> Int -> Int -> [Word8]
+scrypted pwd salt N p r = scrypted' 2 where
+  scrypted' L = scrypt pwd salt N p r L : drop L scrypted' (L * 2)
+
+password :: [a] -> Int -> Password -> Login -> Salt -> Int -> Int -> Int -> [a]
+password alphabet length master login salt N p r =
+  take length $ map (alphabet !!) $ filter (< n) $ map (/ d) stream
+  where
+    n = length alphabet
+    d = floor (255 / n)
+    pwd = master ++ login
+    stream = scrypted pwd salt N p r
+```
 
 [gh-page]: http://curiousleo.github.io/syp/
 [scrypt-wp]: https://en.m.wikipedia.org/wiki/Scrypt

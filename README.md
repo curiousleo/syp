@@ -35,7 +35,7 @@ In Haskell-like pseudocode, this works roughly as follows:
 ``` haskell
 scrypted :: String -> Salt -> Int -> Int -> Int -> [Word8]
 scrypted pwd salt n p r = scrypted' 2 where
-  scrypted' len = scrypt pwd' salt' n p r len : drop len scrypted' (len * 2)
+  scrypted' len = scrypt pwd' salt' n p r len : drop len $ scrypted' (len * 2)
   pwd' = fromString pwd :: [Word8]
   salt' = fromSalt salt :: [Word8]
 

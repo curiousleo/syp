@@ -10,7 +10,7 @@ Webapp quickstart
 2. Enter a master password.
 3. Add a first login, e.g. `john.doe@example.com`.
 4. Click on the newly added login to generate the password.
-5. Bookmark the generated webapp URL to be able to regenerate your passwords. See [What's with the URLs?][#what-s-with-the-urls].
+5. Bookmark the generated webapp URL to be able to regenerate your passwords. See [What's with the URLs?][#whats-with-the-urls].
 
 What's with the URLs?
 ---------------------

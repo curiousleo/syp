@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Passwords</title>
+  <title>SYP – Scrypt Your Passwords</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="1pwd.css"/>
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
@@ -13,7 +14,6 @@
   <div id="authapp">
 
     <header>
-      <h1>Passwords</h1>
       <input type="password" placeholder="What's your master password?" id="master-password">
       <input type="text" placeholder="Create a password for ..." id="new-auth">
     </header>
@@ -29,9 +29,9 @@
   </div>
 
   <div id="instructions">
-    <span class="master">Enter your master password. Make it a good one!</span>
-    <span class="empty">Enter a login identifier, for example john.doe@amazon.com</span>
-    <span class="copy">Click on a login, then press <b>Ctrl-C</b> to copy the password to the clipboard.</span>
+    <span class="master">Please enter your master password.</span>
+    <span class="empty">Please add your first login identifier, e.g. <b>peter@example.com</b></span>
+    <span class="copy">Click on a login to (re)generate its password.</span>
   </div>
 
   <div id="credits">
@@ -49,14 +49,13 @@
   <script src="contrib/backbone.localStorage.js"></script>
   <script src="contrib/scrypt.js"></script>
   <script src="util.js"></script>
-  <script src="1pwd-gen.js"></script>
-  <script src="1pwd.js"></script>
+  <script src="syp.js"></script>
 
   <!-- Templates -->
 
   <script type="text/template" id="auth-template">
     <div class="view">
-      <span><%- login %></span>
+      <span class="login"><%- login %></span>
       <div class="copy-message">Press <b>Ctrl-C</b> to copy the password</div>
       <a class="action edit fa fa-pencil"></a>
       <a class="action delete fa fa-remove"></a>

@@ -180,8 +180,7 @@ $(function() {
       this.listenTo(Auths, 'reset', this.addAll);
       this.listenTo(Auths, 'all', this.render);
 
-      // this.loginInput.hide();
-      // $('#instructions .master').show();
+      $('#instructions .master').show();
     },
 
     render: function() {

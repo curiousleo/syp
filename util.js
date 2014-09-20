@@ -85,7 +85,7 @@ function randomHex(n) {
 function isTouch() {
   try {
     document.createEvent("TouchEvent");
-    return true
+    return true;
   } catch (e) {
     return false;
   }

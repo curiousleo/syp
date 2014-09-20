@@ -125,9 +125,20 @@ body {
   display: block;
 }
 
+#auth-list .view {
+  padding-left: 6px;
+}
+
+#auth-list .view .login-wrapper {
+  padding-right: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
 #auth-list .view .menu {
   top: 10px;
-  background: white;
 /*display: none;*/
 }
 

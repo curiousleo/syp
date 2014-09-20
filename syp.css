@@ -73,7 +73,7 @@ body {
 }
 
 #auth-list li {
-  padding: 18px 20px 18px 0;
+  padding: 12px 20px 8px 0;
   position: relative;
   font-size: 24px;
   border-bottom: 1px solid #cccccc;
@@ -111,12 +111,6 @@ body {
   text-align: center;
 }
 
-#auth-list li .copy-message {
-  font-size: 11px;
-  margin-bottom: -19px;
-  display: none;
-}
-
 #auth-list li.copied {
   background: #FFFCAE;
 }
@@ -125,20 +119,18 @@ body {
   display: block;
 }
 
-#auth-list .view {
-  padding-left: 6px;
-}
-
 #auth-list .view .login-wrapper {
   padding-right: 50px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  padding-top: 1px;
+  height: 1em;
 }
 
 
 #auth-list .view .menu {
-  top: 10px;
+  top: 6px;
 /*display: none;*/
 }
 
@@ -153,7 +145,7 @@ body {
 
 #auth-list input.alphabet {
   font-size: 16px;
-  width: 8em;
+  width: 5em;
   margin-right: 1em;
 }
 

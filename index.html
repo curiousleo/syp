@@ -82,8 +82,9 @@
     <div class="view">
       <span class="login"><%- login %></span>
       <div class="copy-message">Press <b>Ctrl-C</b> to copy the password</div>
-      <a class="action edit fa fa-pencil"></a>
-      <a class="action delete fa fa-remove"></a>
+      <a class="menu edit fa fa-pencil"></a>
+      <a class="menu delete fa fa-remove"></a>
+      <span class="menu wait fa fa-circle-o-notch fa-spin"></a>
     </div>
     <div class="change">
       <input class="login" type="text" value="<%- login %>">
@@ -94,7 +95,7 @@
       <label for="length-<%- order %>">Length</label>
       <input class="length" id="length-<%- order %>" type="number" min="2" max="80" value="<%- length %>">
 
-      <a class="action save fa fa-check"></a>
+      <a class="menu save fa fa-check"></a>
     </div>
   </script>
 

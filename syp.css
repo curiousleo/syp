@@ -100,7 +100,7 @@ body {
   text-decoration: line-through;
 }
 
-#auth-list a.action {
+#auth-list .menu {
   position: absolute;
   cursor: pointer;
   width: 30px;
@@ -108,6 +108,7 @@ body {
 /*background: white;*/
   padding: 6px;
   color: #aaa;
+  text-align: center;
 }
 
 #auth-list li .copy-message {
@@ -124,7 +125,7 @@ body {
   display: block;
 }
 
-#auth-list .view a.action {
+#auth-list .view .menu {
   top: 10px;
 /*display: none;*/
 }
@@ -136,7 +137,6 @@ body {
 #auth-list a.save {
   background: transparent;
   bottom: -5px;
-  right: -13px;
 }
 
 #auth-list input.alphabet {
@@ -149,20 +149,24 @@ body {
   padding: 2px;
 }
 
-#auth-list a.action:hover {
+#auth-list a.menu:hover {
   color: inherit;
 }
 
 #auth-list a.edit {
-  right: 15px;
+  right: 20px;
 }
 
-#auth-list a.delete {
-  right: -15px;
+#auth-list a.delete, #auth-list span.wait, #auth-list a.save {
+  right: -10px;
 }
 
-#auth-list li:hover a.action {
-    display: block;
+#auth-list span.wait {
+  display: none;
+}
+
+#auth-list li:hover .menu {
+  /* display: block; */
 }
 
 #auth-list li.editing {

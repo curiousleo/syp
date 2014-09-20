@@ -116,27 +116,37 @@ $(function() {
       var len = parseInt(this.model.get('length'));
       var alphabet = this.model.get('alphabet');
 
-      var scrypted = generatePassword(password, salt, scryptParams, len, alphabet);
+      this.$('.view .menu').hide();
+      this.$('.view .wait').show();
 
-      if (isTouch()) {
-        window.prompt('Your password for ' + this.model.get('login'), scrypted);
-      } else {
-        $('#authapp .copied').removeClass('copied');
+      var that = this;
 
-        var container = $('#clipboard-container');
-        container.empty().show();
-        var textarea = $('<textarea id="clipboard"></textarea>')
-          .appendTo(container)
-          .text(scrypted)
-          .focus()
-          .select();
+      _.defer(function () {
+        var scrypted = generatePassword(password, salt, scryptParams, len, alphabet);
 
-        var $el = this.$el;
-        $el.addClass('copied');
-        textarea.on('blur', function() {
-          $el.removeClass('copied');
-        });
-      }
+        if (isTouch()) {
+          window.prompt('Your password for ' + that.model.get('login'), scrypted);
+        } else {
+          $('#authapp .copied').removeClass('copied');
+
+          var container = $('#clipboard-container');
+          container.empty().show();
+          var textarea = $('<textarea id="clipboard"></textarea>')
+            .appendTo(container)
+            .text(scrypted)
+            .focus()
+            .select();
+
+          var $el = that.$el;
+          $el.addClass('copied');
+          textarea.on('blur', function() {
+            $el.removeClass('copied');
+          });
+        }
+
+        that.$('.view .menu').show();
+        that.$('.view .wait').hide();
+      });
     }
 
   });
@@ -173,7 +183,10 @@ $(function() {
       scryptParams['salt'] = params['salt'];
       scryptParams['saltEnc'] = hexStringToUint8Array(params['salt']);
 
-      window.location.hash = $.param(scryptParams);
+      window.location.hash = $.param({
+          N: scryptParams['N'], r: scryptParams['r'], p: scryptParams['p'],
+          salt: scryptParams['salt']
+      });
 
       this.loginInput = this.$('#new-auth');
       this.masterInput = this.$('#master-password');

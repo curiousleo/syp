@@ -146,7 +146,6 @@ body {
 #auth-list input.alphabet {
   font-size: 16px;
   width: 5em;
-  margin-right: 1em;
 }
 
 #auth-list input.alphabet, #auth-list input[type="number"] {
@@ -185,6 +184,11 @@ body {
 #auth-list li.editing div.change {
   display: block;
   margin: 0;
+}
+
+#auth-list .change div {
+    display: inline-block;
+    margin-right: 25px;
 }
 
 #auth-list li.editing .view {

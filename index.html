@@ -90,11 +90,15 @@
     <div class="change">
       <input class="login" type="text" value="<%- login %>">
 
-      <label for="alphabet-<%- order %>">Alphabet</label>
-      <input class="alphabet" id="alphabet-<%- order %>" type="text" value="<%- alphabet %>">
+      <div>
+        <label for="alphabet-<%- order %>">Alphabet</label>
+        <input class="alphabet" id="alphabet-<%- order %>" type="text" value="<%- alphabet %>">
+      </div>
 
-      <label for="length-<%- order %>">Length</label>
-      <input class="length" id="length-<%- order %>" type="number" min="2" max="80" value="<%- length %>">
+      <div>
+        <label for="length-<%- order %>">Length</label>
+        <input class="length" id="length-<%- order %>" type="number" min="2" max="80" value="<%- length %>">
+      </div>
 
       <a class="menu save fa fa-check"></a>
     </div>

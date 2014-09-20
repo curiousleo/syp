@@ -127,6 +127,7 @@ body {
 
 #auth-list .view .menu {
   top: 10px;
+  background: white;
 /*display: none;*/
 }
 
@@ -154,7 +155,7 @@ body {
 }
 
 #auth-list a.edit {
-  right: 20px;
+  right: 25px;
 }
 
 #auth-list a.delete, #auth-list span.wait, #auth-list a.save {

@@ -70,7 +70,7 @@ function hexStringToUint8Array (str) {
     var code2 = upper.charCodeAt(i * 2 + 1);
     bufView[i] = 16 * fromHex(code1) + fromHex(code2);
   }
-  return buf;
+  return bufView;
 }
 
 function randomHex(n) {

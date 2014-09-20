@@ -160,12 +160,8 @@ body {
   right: 25px;
 }
 
-#auth-list a.delete, #auth-list span.wait, #auth-list a.save {
+#auth-list a.delete, #auth-list a.save {
   right: -10px;
-}
-
-#auth-list span.wait {
-  display: none;
 }
 
 #auth-list li:hover .menu {

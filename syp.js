@@ -67,7 +67,7 @@ $(function() {
       'click .save': 'close',
       'keypress .change .login': 'closeOnEnter',
       'keypress .change .alphabet': 'closeOnEnter',
-      'click .view .login': 'copy'
+      'click .view': 'copy'
     },
 
     initialize: function() {
@@ -92,6 +92,8 @@ $(function() {
     edit: function() {
       this.$el.addClass("editing");
       this.login.focus();
+
+      return false;
     },
 
     close: function() {
@@ -104,10 +106,14 @@ $(function() {
         this.model.save({ login: login, alphabet: alphabet, length: len });
         this.$el.removeClass('editing');
       }
+
+      return false;
     },
 
     clear: function() {
       this.model.destroy();
+
+      return false;
     },
 
     copy: function() {
@@ -116,8 +122,7 @@ $(function() {
       var len = parseInt(this.model.get('length'));
       var alphabet = this.model.get('alphabet');
 
-      this.$('.view .menu').hide();
-      this.$('.view .wait').show();
+      $('.view .menu').hide();
 
       var that = this;
 
@@ -144,9 +149,10 @@ $(function() {
           });
         }
 
-        that.$('.view .menu').show();
-        that.$('.view .wait').hide();
+        $('.view .menu').show();
       });
+
+      return false;
     }
 
   });
